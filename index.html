@@ -801,7 +801,7 @@ body.admin-mode > nav { display: none !important; }
     <a data-page="international" onclick="showPage('international')">International</a><a data-page="quote" onclick="showPage('quote')">Get Quote</a>
     <a data-page="trucks" onclick="showPage('trucks')">Truck Board</a>
     <a data-page="about" onclick="showPage('about')">About</a>
-    <a data-page="careers" onclick="showPage('careers')">Careers</a>
+
     <a data-page="contact" onclick="showPage('contact')">Contact</a>
     <a data-page="admin" onclick="showPage('admin')" style="color:var(--red2);font-weight:700">Admin</a>
   </nav>
@@ -821,7 +821,6 @@ body.admin-mode > nav { display: none !important; }
   <a onclick="showPage('quote')">Get Quote</a>
   <a onclick="showPage('trucks')">Truck Board</a>
   <a onclick="showPage('about')">About</a>
-  <a onclick="showPage('careers')">Careers</a>
   <a onclick="showPage('contact')">Contact</a>
   <a onclick="showPage('faq')">FAQ</a>
   <a onclick="showPage('business')">Business Account</a>
@@ -3121,13 +3120,14 @@ var ADMIN_PASS = 'jaad2026';
 function adminLogin(){
   var p = ($('admin-pass')?.value||'').trim();
   if(p !== ADMIN_PASS) return toast('Incorrect admin password.',true);
+  adminAuthed = true;
   $('admin-login-screen').style.display = 'none';
   $('admin-main').style.display = 'block';
   adminTab('overview');
   trackActivity('Admin logged in');
 }
 function adminTab(tab){
-  if(!adminAuthed){showAdminLogin(tab);return;}
+  if(!adminAuthed) return;
   document.querySelectorAll('.admin-tab').forEach(function(b){b.classList.remove('active');});
   var t = $('atab-'+tab); if(t) t.classList.add('active');
   var c = $('admin-content'); if(!c) return;
@@ -3254,16 +3254,91 @@ function adminTab(tab){
   }
   if(tab==='email'){renderEmailSettings(c);return;}
   if(tab==='kb'){
-    c.innerHTML='<div class="dc"><h3 style="font-size:1.1rem;margin-bottom:12px">Knowledge Base &mdash; AI Chatbot Training</h3>'
-      +'<p style="color:var(--muted);font-size:.88rem;margin-bottom:16px">This text is used by the AI chatbot to answer customer questions. Paste your FAQs, pricing, policies and service details here.</p>'
-      +'<textarea id="kb-area" style="width:100%;min-height:300px;padding:14px;border:1.5px solid var(--border);border-radius:var(--r);font-family:var(--fb);font-size:.88rem;line-height:1.7">'+esc(getKnowledgeBase())+'</textarea>'
-      +'<div style="display:flex;gap:10px;margin-top:12px">'
-      +'<button class="btn btn-red" onclick="saveKnowledgeBase()">Save Knowledge Base</button>'
-      +'<button class="btn btn-outline-dark" onclick="clearKnowledgeBase()">Clear</button>'
-      +'</div></div>';
+    var entries = ls('jaad_kb_entries',[]);
+    c.innerHTML='<div class="dc">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:10px">'
+      +'<h3 style="font-size:1.1rem">Knowledge Base — AI Chatbot Training</h3>'
+      +'<span style="font-size:.78rem;color:var(--green);font-weight:700">✓ Auto-saves as you type</span>'
+      +'</div>'
+      +'<p style="color:var(--muted);font-size:.86rem;margin-bottom:18px">Each entry is a question and answer the chatbot uses to reply to customers. Changes save automatically.</p>'
+      // Add new entry form
+      +'<div style="background:var(--off);border:1.5px solid var(--border);border-radius:12px;padding:18px;margin-bottom:22px">'
+      +'<h4 style="font-size:.95rem;margin-bottom:12px">Add New Entry</h4>'
+      +'<div class="fg"><label>Question</label><input id="kb-new-q" placeholder="e.g. What is your delivery time to Abuja?"></div>'
+      +'<div class="fg"><label>Answer</label><textarea id="kb-new-a" style="min-height:80px;width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--r);font-family:var(--fb);font-size:.88rem;line-height:1.6;resize:vertical" placeholder="e.g. Delivery to Abuja takes 2 to 3 business days via Standard service..."></textarea></div>'
+      +'<button class="btn btn-red" onclick="kbAddEntry()">+ Add to Knowledge Base</button>'
+      +'</div>'
+      // Existing entries
+      +'<div id="kb-list">'
+      +(entries.length
+        ? entries.map(function(e,i){
+            return '<div style="border:1.5px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px;background:#fff" id="kb-entry-'+i+'">'
+              +'<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px">'
+              +'<div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted)">Entry '+(i+1)+'</div>'
+              +'<button onclick="kbDeleteEntry('+i+')" style="background:rgba(220,26,34,.08);border:1px solid rgba(220,26,34,.2);color:var(--red);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:.74rem;font-weight:700;font-family:inherit">Delete</button>'
+              +'</div>'
+              +'<div class="fg" style="margin-bottom:8px"><label>Question</label>'
+              +'<input value="'+esc(e.q)+'" oninput="kbUpdateEntry('+i+',\'q\',this.value)" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r);font-family:var(--fb);font-size:.88rem"></div>'
+              +'<div class="fg" style="margin-bottom:0"><label>Answer</label>'
+              +'<textarea oninput="kbUpdateEntry('+i+',\'a\',this.value)" style="width:100%;min-height:70px;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r);font-family:var(--fb);font-size:.88rem;line-height:1.6;resize:vertical">'+esc(e.a)+'</textarea></div>'
+              +'</div>';
+          }).join('')
+        : '<div style="text-align:center;padding:32px;color:var(--muted)">No entries yet. Add your first question and answer above.</div>')
+      +'</div>'
+      +'</div>';
     return;
   }
 
+}
+
+// ============================================================
+// KNOWLEDGE BASE — Q&A entry management
+// ============================================================
+function kbGetEntries(){return ls('jaad_kb_entries',[]);}
+function kbSaveEntries(entries){
+  lsSet('jaad_kb_entries',entries);
+  // Rebuild flat text for chatbot
+  var txt=entries.map(function(e){return'Q: '+e.q+'\nA: '+e.a;}).join('\n\n');
+  lsSet('jaad_kb_text',txt);
+}
+function kbAddEntry(){
+  var q=($('kb-new-q')?.value||'').trim();
+  var a=($('kb-new-a')?.value||'').trim();
+  if(!q||!a)return toast('Please fill in both question and answer.',true);
+  var entries=kbGetEntries();
+  entries.push({q:q,a:a});
+  kbSaveEntries(entries);
+  toast('Entry added and saved!');
+  adminTab('kb');
+}
+function kbUpdateEntry(idx,field,val){
+  var entries=kbGetEntries();
+  if(!entries[idx])return;
+  entries[idx][field]=val;
+  kbSaveEntries(entries);
+}
+function kbDeleteEntry(idx){
+  if(!confirm('Delete this entry?'))return;
+  var entries=kbGetEntries();
+  entries.splice(idx,1);
+  kbSaveEntries(entries);
+  toast('Entry deleted.');
+  adminTab('kb');
+}
+// Migrate existing flat KB text to entries on first load
+function kbMigrate(){
+  if(kbGetEntries().length>0)return; // already migrated
+  var txt=ls('jaad_kb_text','');
+  if(!txt)return;
+  var entries=[];
+  // Parse Q:/A: pairs
+  var blocks=txt.split(/\n\n+/);
+  blocks.forEach(function(block){
+    var qm=block.match(/^Q:\s*(.+)/m);
+    var am=block.match(/^A:\s*([\s\S]+)/m);
+    if(qm&&am)entries.push({q:qm[1].trim(),a:am[1].trim()});
+  });
+  if(entries.length>0){kbSaveEntries(entries);trackActivity('KB migrated: '+entries.length+' entries');}
 }
 
 function quickStatusUpdate(tn,newStatus){
@@ -4393,16 +4468,10 @@ function init(){
   populateCountries();
   fillSel($('r-state'));
   newCaptcha();
+  kbMigrate();
   setTimeout(initDemoImgs,600);
   renderStates();renderTrucks();initChat();updateAuthNav();
   seed();
-  // fill state dropdowns
-  fillSel($('q-from'));fillSel($('q-to'));fillSel($('o-pstate'));fillSel($('o-dstate'));fillSel($('f-state'),true);fillSel($('rc-from'));fillSel($('rc-to'));
-  populateCountries();
-  fillSel($('r-state'));
-  newCaptcha();
-  setTimeout(initDemoImgs,600);
-  renderStates();renderTrucks();initChat();updateAuthNav();
 }
 window.addEventListener('load',init);
 
