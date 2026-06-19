@@ -784,6 +784,120 @@ body.admin-mode > footer,
 body.admin-mode > header,
 body.admin-mode > nav { display: none !important; }
 
+
+/* ===== COMPREHENSIVE MOBILE STYLES ===== */
+*{-webkit-tap-highlight-color:transparent;box-sizing:border-box}
+@media(max-width:768px){
+  /* Header */
+  .hdr-inner{padding:0 16px;height:58px}
+  .logo-img{height:36px!important}
+
+  /* Hero */
+  .hero{padding:70px 0 40px;min-height:auto}
+  .hero-inner{grid-template-columns:1fr;gap:28px;padding:0 16px}
+  .hero h1{font-size:2.4rem!important;line-height:1.05}
+  .hero-sub{font-size:.95rem}
+  .hero-btns{flex-direction:column;gap:10px}
+  .hero-btns .btn{width:100%;text-align:center;justify-content:center}
+  .hero-track{margin-top:0;padding:20px}
+  .track-search{flex-direction:column;gap:10px}
+  .track-search input,.track-search .btn{width:100%}
+
+  /* Sections */
+  .sec{padding:44px 0}
+  .wrap{padding:0 16px}
+  .sec-title{font-size:1.8rem!important}
+  .sec-sub{font-size:.9rem}
+
+  /* Grids */
+  .svc-grid,.val-grid,.biz-plan-grid,.globe-grid{grid-template-columns:1fr!important}
+  .why-grid{grid-template-columns:1fr!important}
+  .steps-wrap{grid-template-columns:1fr!important}
+  .testi-grid{grid-template-columns:1fr!important}
+  .about-split{grid-template-columns:1fr!important}
+  .contact-split{grid-template-columns:1fr!important}
+  .footer-cols{grid-template-columns:1fr 1fr!important}
+  .fr{grid-template-columns:1fr!important;gap:10px}
+  .stats-band{grid-template-columns:1fr 1fr!important}
+  .kpi-row{grid-template-columns:1fr 1fr!important}
+  .adm-kpi{grid-template-columns:1fr 1fr!important}
+  .rate-compare-inputs{grid-template-columns:1fr!important}
+  .ref-stats{grid-template-columns:1fr 1fr!important}
+  .globe-grid{grid-template-columns:1fr 1fr!important}
+
+  /* Forms */
+  .fg{margin-bottom:12px}
+  .fg label{font-size:.82rem}
+  .fg input,.fg select,.fg textarea{font-size:16px!important;padding:12px 14px!important}
+  .btn-lg{padding:14px 20px!important;font-size:.95rem!important}
+  .btn-block{width:100%!important;text-align:center}
+
+  /* Dashboard sidebar */
+  .dash-layout{grid-template-columns:1fr!important;gap:0}
+  .sidebar{display:flex;overflow-x:auto;padding:10px 12px;gap:6px;border-right:none;border-bottom:1.5px solid var(--border);min-width:unset;min-height:unset;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .sb-link{flex-direction:column;padding:8px 10px;font-size:.68rem;min-width:70px;text-align:center;gap:3px;flex-shrink:0;white-space:nowrap;border-radius:8px}
+  .sb-link svg{width:18px;height:18px;margin:0 auto}
+  .dash-main{padding:16px}
+  .dash-top{flex-direction:column;gap:12px;margin-bottom:18px}
+  .dash-greet h2{font-size:1.4rem}
+
+  /* Admin tabs */
+  .admin-tabs{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;gap:4px;flex-wrap:nowrap}
+  .admin-tab{white-space:nowrap;flex-shrink:0;padding:8px 12px;font-size:.76rem}
+  #admin-main{padding:14px!important}
+
+  /* Cards */
+  .fbox{padding:18px!important}
+  .pg-banner .wrap h1{font-size:2rem}
+  .pg-banner{padding:40px 0 32px}
+
+  /* Quote layout */
+  .quote-layout{grid-template-columns:1fr!important}
+  .quote-result{padding:20px;margin-top:12px}
+
+  /* Track page */
+  .tr-info-grid{grid-template-columns:1fr!important}
+
+  /* Trucks grid */
+  #trucks-list{grid-template-columns:1fr 1fr!important}
+  .truck-body h3{font-size:.9rem}
+  .truck-price-sm{font-size:1.1rem}
+
+  /* International */
+  .intl-hero{padding:48px 0}
+  .globe-card .gc-num{font-size:1.8rem}
+
+  /* Rate table */
+  .rate-table th,.rate-table td{padding:9px 8px;font-size:.78rem}
+  .svc-compare th,.svc-compare td{padding:10px 10px;font-size:.82rem}
+
+  /* Quote tabs */
+  .quote-tabs{gap:3px}
+  .qt{font-size:.8rem;padding:10px 8px}
+
+  /* Chat FAB */
+  #chat-fab{bottom:16px;right:16px;width:52px;height:52px}
+  #chat-panel{width:calc(100vw - 24px)!important;right:12px!important;bottom:80px!important}
+
+  /* Status pills */
+  .spill{font-size:.65rem;padding:3px 8px}
+
+  /* Invoice modal */
+  #invoice-modal > div{padding:20px!important}
+  .inv-grid{grid-template-columns:1fr!important}
+}
+
+@media(max-width:480px){
+  .hero h1{font-size:2rem!important}
+  .footer-cols{grid-template-columns:1fr!important}
+  #trucks-list{grid-template-columns:1fr!important}
+  .stats-band .stat-band-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding:16px}
+  .kpi-row,.adm-kpi{grid-template-columns:1fr!important}
+  .ref-stats{grid-template-columns:1fr!important}
+  .doc-sheet{max-height:96vh}
+  .globe-grid{grid-template-columns:1fr!important}
+}
+
 </style>
 </head>
 <body>
@@ -1363,6 +1477,7 @@ body.admin-mode > nav { display: none !important; }
         <div class="security-badge"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Step 2 of 4 — Identity Verification</div>
         <p style="color:var(--muted);font-size:.88rem;margin-bottom:16px">Upload a clear photo of your government-issued ID (National ID, Passport, or Driver's License). This is required to verify your identity and protect our community.</p>
         <div class="fg"><label>ID Type</label><select id="id-type"><option>National ID Card</option><option>International Passport</option><option>Driver's License</option><option>Voter's Card</option></select></div>
+        <p style="color:var(--muted);font-size:.86rem;margin-bottom:10px">Upload a <b>government-issued ID only</b> — NIN slip, Voter's card, International passport, or Driver's licence. Other documents will be rejected.</p>
         <div class="id-upload-box" onclick="$('id-file').click()">
           <input type="file" id="id-file" accept="image/*" style="display:none" onchange="handleIdUpload(this)">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.5" style="margin:0 auto 10px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
@@ -2203,6 +2318,15 @@ function placeOrder(){
   lsSet('jaad_receipts',rcptsList);
   lsSet('jaad_orders',orders);
   trackActivity('Placed order '+tn+' from '+f.pstate+' to '+f.dstate);
+  // Also save to backend
+  apiPost('/api/orders',{
+    name:f.name,email:f.email,phone:f.phone,service:f.service,
+    pstate:f.pstate,pcity:f.pcity,paddr:f.paddr,
+    dstate:f.dstate,dcity:f.dcity,daddr:f.daddr,
+    weight:f.weight,details:f.details,
+    insured:insured,insValue:insVal,insPremium:insPremium,
+    walletPaid:walletPay,estPrice:estPrice
+  },true).catch(function(){});
   sendNotification('order',{name:f.name,email:f.email,phone:f.phone,tn:tn,from:f.pcity+', '+f.pstate,to:f.dcity+', '+f.dstate});
   toast('✅ Order placed successfully!');autoInvoice(tn);
   setTimeout(()=>{alert(`🎉 Order Confirmed!\n\nTracking #: ${tn}\n\nSave this to track your shipment.\n(Live site: confirmation sent to ${f.email} and ${f.phone})`);if($('track-input'))$('track-input').value=tn;showPage('track');doTrack();},300);
@@ -4168,24 +4292,65 @@ function deleteJob(idx){
 
 
 function renderAdminTopups(c){
-  var pending=ls('jaad_pending_topups',[]).reverse();
-  c.innerHTML='<div class="dc"><h3 style="font-size:1.1rem;margin-bottom:16px">Wallet Top-up Requests ('+pending.length+')</h3>'
-    +(pending.length
-      ?pending.map(function(p){
-          return '<div style="border:1.5px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px">'
-            +'<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px">'
-            +'<div><b>'+esc(p.name)+'</b> ('+esc(p.email)+')<br>'
-            +'<span style="font-family:var(--fd);font-size:1.3rem;color:var(--red)">'+naira(p.amount)+'</span>'
-            +' via <b>'+esc(p.method)+'</b> · Ref: <code style="font-size:.8rem">'+esc(p.ref)+'</code><br>'
-            +'<span style="font-size:.78rem;color:var(--muted)">'+esc(p.createdAt)+'</span></div>'
-            +'<span class="spill '+(p.status==='credited'?'sp-delivered':p.status==='receipt_uploaded'?'sp-transit':'sp-placed')+'">'+esc(p.status)+'</span>'
-            +'</div>'
-            +(p.receipt?'<div style="margin-top:10px"><img src="'+p.receipt+'" style="max-width:200px;border-radius:8px;border:1px solid var(--border)" alt="Receipt"><br></div>':'')
-            +(p.status!=='credited'?'<button class="btn btn-red btn-sm" style="margin-top:10px" onclick="creditTopup(this.dataset.r,this.dataset.e,this.dataset.a)" data-r="'+p.ref+'" data-e="'+p.email+'" data-a="'+p.amount+'">Credit Wallet Now</button>':'<span style="color:var(--green);font-weight:700;font-size:.86rem">✓ Wallet credited</span>')
-            +'</div>';
-        }).join('')
-      :'<div style="text-align:center;padding:30px;color:var(--muted)">No pending top-ups.</div>')
-    +'</div>';
+  var pending=ls('jaad_pending_topups',[]).slice().reverse();
+  var users=ls('jaad_users',[]);
+  var out='<div class="dc">';
+
+  // Manual credit section at top
+  out+='<div style="background:var(--off);border:1.5px solid var(--border);border-radius:12px;padding:18px;margin-bottom:22px">';
+  out+='<h4 style="font-size:.95rem;margin-bottom:12px">💳 Manually Credit a Customer Wallet</h4>';
+  out+='<div class="fr"><div class="fg" style="margin:0"><label>Customer Email</label>';
+  out+='<select id="manual-credit-email" style="width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--r);font-family:inherit;font-size:.88rem">';
+  out+='<option value="">Select customer...</option>';
+  users.forEach(function(u){out+='<option value="'+esc(u.email)+'">'+esc(u.name)+' ('+esc(u.email)+')</option>';});
+  out+='</select></div>';
+  out+='<div class="fg" style="margin:0"><label>Amount (₦)</label><input type="number" id="manual-credit-amt" placeholder="e.g. 5000" style="width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--r);font-family:inherit;font-size:.88rem"></div>';
+  out+='<div class="fg" style="margin:0"><label>Reason</label><input id="manual-credit-reason" placeholder="e.g. Bank transfer confirmed" style="width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--r);font-family:inherit;font-size:.88rem"></div>';
+  out+='</div>';
+  out+='<button class="btn btn-red" style="margin-top:10px" onclick="doManualCredit()">Credit Wallet Now</button>';
+  out+='</div>';
+
+  // Pending requests
+  out+='<h3 style="font-size:1rem;margin-bottom:14px">Top-up Requests ('+pending.length+')</h3>';
+  if(pending.length){
+    pending.forEach(function(p){
+      out+='<div style="border:1.5px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px">';
+      out+='<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px">';
+      out+='<div><b>'+esc(p.name)+'</b> ('+esc(p.email)+')<br>';
+      out+='<span style="font-family:var(--fd);font-size:1.25rem;color:var(--red)">'+naira(p.amount)+'</span>';
+      out+=' via <b>'+esc(p.method)+'</b> · Ref: <code style="font-size:.78rem">'+esc(p.ref)+'</code><br>';
+      out+='<span style="font-size:.76rem;color:var(--muted)">'+esc(p.createdAt)+'</span></div>';
+      out+='<span class="spill '+(p.status==='credited'?'sp-delivered':p.status==='receipt_uploaded'?'sp-transit':'sp-placed')+'">'+esc(p.status)+'</span>';
+      out+='</div>';
+      if(p.receipt){
+        out+='<div style="margin-top:10px"><img src="'+p.receipt+'" style="max-width:220px;border-radius:8px;border:1px solid var(--border)" alt="Receipt"></div>';
+      }
+      if(p.status!=='credited'){
+        out+='<button class="btn btn-red btn-sm" style="margin-top:10px" onclick="creditTopup(this.dataset.r,this.dataset.e,this.dataset.a)" data-r="'+p.ref+'" data-e="'+p.email+'" data-a="'+p.amount+'">✓ Credit ₦'+Number(p.amount).toLocaleString()+' to Wallet</button>';
+      } else {
+        out+='<div style="color:var(--green);font-weight:700;font-size:.86rem;margin-top:8px">✓ Wallet credited</div>';
+      }
+      out+='</div>';
+    });
+  } else {
+    out+='<div style="text-align:center;padding:30px;color:var(--muted)">No top-up requests yet.</div>';
+  }
+  out+='</div>';
+  c.innerHTML=out;
+}
+function doManualCredit(){
+  var email=($('manual-credit-email')?.value||'').trim();
+  var amt=parseFloat($('manual-credit-amt')?.value||0);
+  var reason=($('manual-credit-reason')?.value||'Manual credit by admin').trim();
+  if(!email)return toast('Select a customer.',true);
+  if(!amt||amt<1)return toast('Enter a valid amount.',true);
+  creditWallet(email,amt,reason);
+  toast('✅ ₦'+amt.toLocaleString()+' credited to '+email);
+  // Log it as a pending topup for record
+  var pending=ls('jaad_pending_topups',[]);
+  pending.push({ref:'MANUAL-'+Date.now(),email:email,name:reason,amount:amt,method:'Manual Admin Credit',status:'credited',createdAt:now()});
+  lsSet('jaad_pending_topups',pending);
+  adminTab('topups');
 }
 function creditTopup(ref,email,amount){
   var pending=ls('jaad_pending_topups',[]);
@@ -4281,33 +4446,54 @@ function renderCareersPage(){
 
 function renderAdminTrucks(c){
   var trucks=ls('jaad_trucks',[]);
-  c.innerHTML='<div class="dc">'
-    var pendTrucks=trucks.filter(function(t){return t.status==='pending';});
-  +(pendTrucks.length?'<div style="background:rgba(245,158,11,.07);border:1.5px solid rgba(245,158,11,.3);border-radius:12px;padding:16px;margin-bottom:18px"><b style="color:#D97706">&#x23F3; Pending Approval ('+pendTrucks.length+')</b>'
-    +pendTrucks.map(function(t){var ri=trucks.indexOf(t);return '<div style="background:#fff;border-radius:9px;padding:13px;margin-top:10px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px"><div><b>'+esc(t.type)+'</b> &#183; '+esc(t.plate)+'<br><span style="font-size:.8rem;color:var(--muted)">'+esc(t.ownerName)+' &#183; '+esc(t.city)+', '+esc(t.state)+'</span></div><div style="display:flex;gap:8px"><button class="btn btn-sm" style="background:#0F9B58;color:#fff;border:none;border-radius:6px;padding:6px 12px;cursor:pointer;font-family:inherit;font-weight:700" onclick="adminApproveTruck('+ri+')">Approve</button><button class="btn btn-sm" style="background:#DC1A22;color:#fff;border:none;border-radius:6px;padding:6px 12px;cursor:pointer;font-family:inherit;font-weight:700" onclick="adminRejectTruck('+ri+')">Reject</button></div></div>';}).join('')+'</div>':'')
-  +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">'
-    +'<h3 style="font-size:1.1rem">All Truck Listings ('+trucks.length+')</h3>'
-    +'<div style="display:flex;gap:8px"><button class="btn btn-red btn-sm" onclick="showAdminAddTruck()">+ Post a Truck</button></div>'
-    +'</div>'
-    +'<div id="admin-truck-form"></div>'
-    +(trucks.length
-      ?'<table class="ship-tbl"><thead><tr><th>Type</th><th>Plate</th><th>Owner</th><th>Location</th><th>Capacity</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead><tbody>'
-        +trucks.map(function(t,i){
-          return '<tr>'
-            +'<td style="font-weight:700;font-size:.85rem">'+esc(t.type)+'</td>'
-            +'<td style="font-size:.82rem;font-family:monospace">'+esc(t.plate)+'</td>'
-            +'<td style="font-size:.82rem"><div>'+esc(t.ownerName)+'</div><div style="color:var(--muted);font-size:.76rem">'+esc(t.ownerEmail)+'</div></td>'
-            +'<td style="font-size:.82rem">'+esc(t.city)+', '+esc(t.state)+'</td>'
-            +'<td style="font-size:.82rem">'+esc(t.capacity)+'</td>'
-            +'<td style="font-weight:700;color:var(--red)">'+naira(t.price)+'</td>'
-            +'<td><span class="spill '+(t.status==='active'?'sp-delivered':'sp-cancelled')+'">'+esc(t.status)+'</span></td>'
-            +'<td style="white-space:nowrap">'
-            +(t.status==='pending_approval'?'<button class="btn btn-sm" style="background:var(--green);color:#fff;border:none;border-radius:6px;padding:5px 10px;cursor:pointer;margin-right:4px;font-family:inherit;font-size:.72rem" onclick="adminApproveTruck('+i+')">Approve</button><button class="btn btn-sm" style="background:var(--red);color:#fff;border:none;border-radius:6px;padding:5px 10px;cursor:pointer;margin-right:4px;font-family:inherit;font-size:.72rem" onclick="adminRejectTruck('+i+')">Reject</button>':'<button class="btn btn-sm btn-outline-dark" style="margin-right:4px;font-size:.72rem" onclick="adminToggleTruck('+i+')">'+( t.status==='active'?'Suspend':'Activate')+'</button>')
-            +'<button class="btn btn-sm" style="background:var(--red);color:#fff;border:none;border-radius:6px;padding:5px 10px;cursor:pointer;font-family:inherit;font-size:.76rem" onclick="adminDeleteTruck('+i+')">Delete</button>'
-            +'</td></tr>';
-        }).join('')+'</tbody></table>'
-      :'<div style="text-align:center;padding:30px;color:var(--muted)">No trucks listed yet.</div>')
-    +'</div>';
+  var pending=trucks.filter(function(t){return t.status==='pending';});
+  var active=trucks.filter(function(t){return t.status!=='pending';});
+  var out='<div class="dc">';
+  out+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">';
+  out+='<h3 style="font-size:1.1rem">Manage Trucks ('+trucks.length+' total)</h3>';
+  out+='<button class="btn btn-red btn-sm" onclick="showAdminAddTruck()">+ Post a Truck</button>';
+  out+='</div>';
+  out+='<div id="admin-truck-form"></div>';
+  // Pending approval section
+  if(pending.length){
+    out+='<div style="background:rgba(245,158,11,.07);border:1.5px solid rgba(245,158,11,.3);border-radius:12px;padding:16px;margin-bottom:18px">';
+    out+='<b style="color:#D97706;display:block;margin-bottom:12px">⏳ Pending Approval ('+pending.length+')</b>';
+    pending.forEach(function(t){
+      var ri=trucks.indexOf(t);
+      out+='<div style="background:#fff;border-radius:9px;padding:14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px">';
+      out+='<div><b>'+esc(t.type)+'</b> · '+esc(t.plate)+'<br><span style="font-size:.8rem;color:var(--muted)">'+esc(t.ownerName)+' · '+esc(t.city)+', '+esc(t.state)+'</span></div>';
+      out+='<div style="display:flex;gap:8px">';
+      out+='<button class="btn btn-sm" style="background:#0F9B58;color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-family:inherit;font-weight:700" onclick="adminApproveTruck('+ri+')">Approve</button>';
+      out+='<button class="btn btn-sm" style="background:#DC1A22;color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-family:inherit;font-weight:700" onclick="adminRejectTruck('+ri+')">Reject</button>';
+      out+='</div></div>';
+    });
+    out+='</div>';
+  }
+  // All trucks table
+  if(trucks.length){
+    out+='<div style="overflow-x:auto"><table class="ship-tbl"><thead><tr><th>Type</th><th>Plate</th><th>Owner</th><th>Location</th><th>Capacity</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead><tbody>';
+    trucks.forEach(function(t,i){
+      out+='<tr>';
+      out+='<td style="font-weight:700;font-size:.85rem">'+esc(t.type)+'</td>';
+      out+='<td style="font-size:.8rem;font-family:monospace">'+esc(t.plate)+'</td>';
+      out+='<td style="font-size:.82rem"><div>'+esc(t.ownerName)+'</div><div style="color:var(--muted);font-size:.74rem">'+esc(t.ownerEmail)+'</div></td>';
+      out+='<td style="font-size:.82rem">'+esc(t.city)+', '+esc(t.state)+'</td>';
+      out+='<td style="font-size:.82rem">'+esc(t.capacity)+'</td>';
+      out+='<td style="font-weight:700;color:var(--red)">'+naira(t.price)+'</td>';
+      out+='<td><span class="spill '+statusClass(t.status)+'">'+esc(t.status)+'</span></td>';
+      out+='<td style="white-space:nowrap;display:flex;gap:4px;flex-wrap:wrap">';
+      if(t.status!=='pending'){
+        out+='<button class="btn btn-sm btn-outline-dark" onclick="adminToggleTruck('+i+')" style="font-size:.72rem">'+(t.status==='active'?'Suspend':'Activate')+'</button>';
+      }
+      out+='<button class="btn btn-sm" style="background:var(--red);color:#fff;border:none;border-radius:6px;padding:5px 10px;cursor:pointer;font-family:inherit;font-size:.72rem" onclick="adminDeleteTruck('+i+')">Delete</button>';
+      out+='</td></tr>';
+    });
+    out+='</tbody></table></div>';
+  } else {
+    out+='<div style="text-align:center;padding:40px;color:var(--muted)">No trucks listed yet. Post one above.</div>';
+  }
+  out+='</div>';
+  c.innerHTML=out;
 }
 function showAdminAddTruck(){
   var fa=$('admin-truck-form');if(!fa)return;
@@ -4452,6 +4638,69 @@ function initDemoImgs(){
   });
   lsSet('jaad_trucks',trucks);
   if(typeof renderTrucks==='function')renderTrucks();
+}
+
+
+function validateIdUpload(input){
+  var file=input.files[0];if(!file)return;
+  var allowed=['image/jpeg','image/jpg','image/png','image/webp','application/pdf'];
+  if(!allowed.includes(file.type)){
+    toast('Invalid file. Upload a JPEG, PNG or PDF of your government-issued ID only.',true);
+    input.value='';return;
+  }
+  if(file.size>5*1024*1024){toast('File too large. Maximum 5MB.',true);input.value='';return;}
+  var reader=new FileReader();
+  reader.onload=function(e){
+    var preview=$('id-preview');
+    if(preview){preview.src=e.target.result;preview.style.display='block';}
+    setTimeout(function(){
+      var ok=confirm('Confirm: Is this a valid government-issued ID?\n\nAccepted: NIN slip, Voter card, International passport, Driver licence.\n\nClick OK to confirm, Cancel to re-upload.');
+      if(!ok){input.value='';if(preview)preview.style.display='none';toast('Please upload a valid government-issued ID.',true);}
+    },200);
+  };
+  reader.readAsDataURL(file);
+}
+
+
+// ============================================================
+// BACKEND API — Vercel deployment
+// ============================================================
+const API = 'https://updated-jaad-backend.vercel.app';
+var _authToken = localStorage.getItem('jaad_token') || '';
+
+async function apiPost(path, data, auth) {
+  const headers = {'Content-Type':'application/json'};
+  if(auth && _authToken) headers['Authorization'] = 'Bearer ' + _authToken;
+  const r = await fetch(API + path, {method:'POST', headers, body: JSON.stringify(data)});
+  return r.json();
+}
+async function apiGet(path, auth, adminPass) {
+  const headers = {};
+  if(auth && _authToken) headers['Authorization'] = 'Bearer ' + _authToken;
+  if(adminPass) headers['x-admin-pass'] = adminPass;
+  const r = await fetch(API + path, {headers});
+  return r.json();
+}
+async function apiPatch(path, data, adminPass) {
+  const headers = {'Content-Type':'application/json'};
+  if(adminPass) headers['x-admin-pass'] = adminPass;
+  if(_authToken) headers['Authorization'] = 'Bearer ' + _authToken;
+  const r = await fetch(API + path, {method:'PATCH', headers, body: JSON.stringify(data)});
+  return r.json();
+}
+async function apiDelete(path, adminPass) {
+  const headers = {};
+  if(adminPass) headers['x-admin-pass'] = adminPass;
+  const r = await fetch(API + path, {method:'DELETE', headers});
+  return r.json();
+}
+function saveToken(token) {
+  _authToken = token;
+  localStorage.setItem('jaad_token', token);
+}
+function clearToken() {
+  _authToken = '';
+  localStorage.removeItem('jaad_token');
 }
 
 // ============================================================
